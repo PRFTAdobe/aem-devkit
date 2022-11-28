@@ -1,0 +1,29 @@
+<'sling'='http://sling.apache.org/jcr/sling/1.0'>
+<'nt'='http://www.jcp.org/jcr/nt/1.0'>
+<'rep'='internal'>
+
+[sling:Resource]
+  mixin
+  - sling:resourceType (string)
+
+[sling:Mapping] > nt:hierarchyNode, sling:MappingSpec, sling:Resource
+  orderable
+  + * (nt:base) = sling:Mapping version
+
+[sling:MappingSpec]
+  mixin
+  - sling:match (string)
+  - sling:redirect (string)
+  - sling:status (long)
+  - sling:internalRedirect (string)
+  - sling:internalRedirect (string) multiple
+
+[sling:Folder] > nt:folder
+  - * (undefined) multiple
+  - * (undefined)
+  + * (nt:base) = sling:Folder version
+
+[rep:RepoAccessControllable]
+  mixin
+  + rep:repoPolicy (rep:Policy) protected ignore
+

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Content-Package-Roots: /etc/map/local-dam-mapping
+Content-Package-Type: content
+Content-Package-Id: aem-docker-devkit:local-dam-mapping
+

@@ -1,0 +1,28 @@
+# This file is used to apply rewrite rules as an include.
+# Consider this base file as a global for re-use
+
+# Prevent X-FORWARDED-FOR spoofing
+RewriteCond %{HTTP:X-Forwarded-For} !^$
+RewriteCond %{HTTP:X-Forwarded-For} !^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+RewriteRule .* - [F]
+
+# Uncomment to force HSTS protection
+# Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
+
+# Block wordpress DDOS Attempts
+RewriteRule ^.*xmlrpc.php - [F]
+RewriteCond %{HTTP_USER_AGENT} ^.*wordpress [NC]
+RewriteRule .* - [F]
+
+# Block wp-login
+RewriteRule ^.*wp-login - [F,NC,L]
+
+## Block AEM and Linux common system paths
+RewriteCond %{REQUEST_URI} ^/cdn-cgi
+RewriteCond %{REQUEST_URI} ^/console/lang
+RewriteCond %{REQUEST_URI} ^/lib
+RewriteCond %{REQUEST_URI} ^/temp
+RewriteCond %{REQUEST_URI} ^/tmp
+RewriteCond %{REQUEST_URI} ^/upload
+RewriteCond %{REQUEST_URI} ^/xsl
+RewriteRule ^(.*)$ /404%20Error%20page [R=404,L,NC]

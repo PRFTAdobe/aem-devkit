@@ -1,0 +1,57 @@
+version: "3.7"
+
+volumes:
+  authordata:
+  publishdata:
+  solrdata:
+
+networks:
+  aem-dev-toolkit:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+
+  author:
+    image: aem-base:latest
+    mem_limit: 4g
+    volumes: 
+      - authordata:/data
+    environment:
+      AEM_RUNMODE: author,docker,local,dev
+    ports:
+      - 34502:30303
+      - 4502:4502
+    networks:
+      aem-dev-toolkit:
+        ipv4_address: 172.20.0.2
+      
+  publish:
+    image: aem-base:latest
+    mem_limit: 3g
+    volumes: 
+      - publishdata:/data
+    environment:
+      AEM_RUNMODE: publish,docker,local,dev
+    ports:
+      - 34503:30303
+      - 4503:4502
+    networks:
+      aem-dev-toolkit:
+        ipv4_address: 172.20.0.3
+
+  dispatcher:
+    image: aem-dispatcher:latest
+    mem_limit: 1g
+    env_file:
+      - dispatcher.env
+    ports:
+      - 80:80
+    volumes:
+      - ./aem-dispatcher/dispatcher/src/conf:/etc/httpd/conf:ro
+      - ./aem-dispatcher/dispatcher/src/conf.d:/etc/httpd/conf.d:ro
+      - ./aem-dispatcher/dispatcher/src/conf.dispatcher.d:/etc/httpd/conf.dispatcher.d:ro
+      - ./aem-dispatcher/dispatcher/src/conf.modules.d:/etc/httpd/conf.modules.d:ro
+    networks:
+      aem-dev-toolkit:

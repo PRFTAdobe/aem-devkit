@@ -1,0 +1,15 @@
+#GitIgnore
+
+#Ignore rep_policy nodes
+_rep_policy
+
+#Ignore Node modules/plugins built locally
+*/node_nodules
+
+#Ignore Local Vault Files
+*.vlt
+*.vlt-sync-config.properties
+*.vlt-sync.log
+
+#Ignore OS specific metadata
+.DS_Store

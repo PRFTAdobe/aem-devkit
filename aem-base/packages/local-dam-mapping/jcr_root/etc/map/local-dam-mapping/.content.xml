@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:Mapping"
+    sling:match="\[^/]+/[^/]+/content/dam/&lt;your application name here>(.*)$"
+    sling:redirect="https://www.somedomain.com/content/dam/&lt;your application name here>$1"
+    sling:status="{Long}301"/>
