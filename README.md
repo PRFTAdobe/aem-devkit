@@ -28,7 +28,7 @@ Running the "Start-All.sh" script in the root/top level of this repository will 
 # Cloning Optimally 
 
 To reduce the time it takes git to retrieve this repo by as much as possible, you can clone the project using this command:
-git clone --depth 1 -b master --single-branch https://github.com/PRFTAdobe/aem-devkit
+git clone --depth 1 -b main --single-branch https://github.com/PRFTAdobe/aem-devkit
 
 
 
