@@ -5,16 +5,14 @@ This is the AEM developer toolkit. This provides a portable/self-contained devel
 
 # Getting Started
 You will need docker (https://www.docker.com/get-started) installed on your system to use this kit.
-Clone this repo to your local system.
+Clone this repo to your local system. 
 
 
-
-# Github Specifics
+# Github Specifics and the License file
 
 Due to Github's file size limitations, you will need to obtain the 6.5.14 service pack from here: https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=%2Fcontent%2Fsoftware-distribution%2Fen%2Fdetails.html%2Fcontent%2Fdam%2Faem%2Fpublic%2Fadobe%2Fpackages%2Fcq650%2Fservicepack%2Faem-service-pkg-6.5.14.0.zip
 
-You also need to obtain the AEM 6.5 jar file. Rename the jar file as "cq-quickstart-6.5.0.jar", then place this jar file and the service pack in the aem-base/packages folder. You should only need to do this once, even if using the resetaem option.
-
+You also need to obtain the AEM 6.5 jar file and a license.properties file. Rename the jar file as "cq-quickstart-6.5.0.jar", then place this jar file, the license.properties file and the service pack in the aem-base/packages folder. You should only need to do this once, even if using the resetaem option.
 
 
 # Standing up the Environment
