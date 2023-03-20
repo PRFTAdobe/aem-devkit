@@ -13,9 +13,9 @@ function resetAEMContainers {
      case $yn in
         Yes ) 
             echo "Resetting the AEM author and publisher."
-            authorContainer=$(docker ps -aqf "name=^aem-dev-toolkit-author-1$")
-            publishContainer=$(docker ps -aqf "name=^aem-dev-toolkit-publish-1$")
-            dispatcherContainer=$(docker ps -aqf "name=^aem-dev-toolkit-dispatcher-1$")
+            authorContainer=$(docker ps -aqf "name=^aem-devkit-author-1$")
+            publishContainer=$(docker ps -aqf "name=^aem-devkit-publish-1$")
+            dispatcherContainer=$(docker ps -aqf "name=^aem-devkit-dispatcher-1$")
             aemBaseImage=$(docker images -q aem-base:latest)
             aemDispatcherImage=$(docker images -q aem-dispatcher:latest)
 
@@ -47,13 +47,13 @@ function resetAEMContainers {
             echo "AEM Docker images removed."
 
             #Remove the volumes
-            docker volume rm aem-dev-toolkit_authordata
-            docker volume rm aem-dev-toolkit_publishdata
+            docker volume rm aem-devkit_authordata
+            docker volume rm aem-devkit_publishdata
 
             echo "AEM Docker volumes removed."
 
             #Remove the network stack
-            docker network rm aem-dev-toolkit
+            docker network rm aem-devkit
             
             echo "AEM Docker network removed."
 
@@ -87,11 +87,11 @@ function start {
             echo "Allow ${initStart} minutes for fix packs to be installed and AEM updated."
             for (( i=${initStartWait}; i>=0; i-- )); do sleep 1; done; echo
             echo "Restarting author and publisher. This is normal for first time setup."
-            docker stop aem-dev-toolkit_author_1  
-            docker stop aem-dev-toolkit_publish_1
+            docker stop aem-devkit-author-1  
+            docker stop aem-devkit-publish-1
             sleep 120
-            docker start aem-dev-toolkit_author_1
-            docker start aem-dev-toolkit_publish_1
+            docker start aem-devkit-author-1
+            docker start aem-devkit-publish-1
             #Install the replication agents.
             installRepAgents
       else
