@@ -10,7 +10,7 @@ RUN apt-get install openjdk-11-jdk-headless -y
 # Copy AEM Dependencies
 ADD packages/license.properties packages/cq-quickstart-6.5.0.jar /data/aem/
 RUN mkdir -p /data/aem/crx-quickstart/install
-ADD packages/aem-service-pkg-6.5.14.0.zip \
+ADD packages/aem-service-pkg-6.5.16.0.zip \
     packages/author-replication-agents.zip \
     packages/publish-replication-agents.zip \
     packages/local-dam-mapping.zip \
