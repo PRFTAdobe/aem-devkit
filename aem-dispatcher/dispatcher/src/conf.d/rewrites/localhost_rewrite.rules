@@ -1,0 +1,12 @@
+# rewrite for root redirect
+RewriteRule ^/?$ /content/we-retail/us/en.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/content
+RewriteCond %{REQUEST_URI} !^/content/forms/af
+RewriteCond %{REQUEST_URI} !^/content/dam/formsanddocuments
+RewriteCond %{REQUEST_URI} !^/content/dam/we-retail
+#ignore common assets from 404
+RewriteCond %{REQUEST_URI} !^/content/dam/shared
+RewriteCond %{REQUEST_URI} !^/content/dam/common
+RewriteCond %{REQUEST_URI} !^/content/we-retail
+RewriteRule !^$path - [R=404,L,NC]
