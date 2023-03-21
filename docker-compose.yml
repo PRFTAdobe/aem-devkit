@@ -6,7 +6,7 @@ volumes:
   solrdata:
 
 networks:
-  aem-dev-toolkit:
+  aem-devkit:
     ipam:
       config:
         - subnet: 172.20.0.0/24
@@ -24,7 +24,7 @@ services:
       - 34502:30303
       - 4502:4502
     networks:
-      aem-dev-toolkit:
+      aem-devkit:
         ipv4_address: 172.20.0.2
       
   publish:
@@ -38,7 +38,7 @@ services:
       - 34503:30303
       - 4503:4502
     networks:
-      aem-dev-toolkit:
+      aem-devkit:
         ipv4_address: 172.20.0.3
 
   dispatcher:
@@ -54,4 +54,4 @@ services:
       - ./aem-dispatcher/dispatcher/src/conf.dispatcher.d:/etc/httpd/conf.dispatcher.d:ro
       - ./aem-dispatcher/dispatcher/src/conf.modules.d:/etc/httpd/conf.modules.d:ro
     networks:
-      aem-dev-toolkit:
+      aem-devkit:
