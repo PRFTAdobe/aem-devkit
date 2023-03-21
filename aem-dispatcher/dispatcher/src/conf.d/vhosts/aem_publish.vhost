@@ -5,7 +5,7 @@ PassEnv DISP_ID
 <VirtualHost *:80>
 	ServerName	publish
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	${PUBLISH_DEFAULT_HOSTNAME}
+	ServerAlias	localhost
 	# Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any
 	DocumentRoot	${PUBLISH_DOCROOT}
 	# Add header breadcrumbs for help in troubleshooting
@@ -18,6 +18,11 @@ PassEnv DISP_ID
 		Header append Vary User-Agent env=!dont-vary
 	</IfModule>
 	<Directory />
+		# Update /etc/sysconfig/httpd with setting the PUBLISH_WHITELIST_ENABLED from 0 or 1 to enable or disable ip restriction rules
+		# Update /etc/sysconfig/httpd with setting the PUBLISH_WHITELIST_ENABLED from 0 or 1 to enable or disable ip restriction rules
+		<If "${PUBLISH_WHITELIST_ENABLED} == 1">
+			Include /etc/httpd/conf.d/whitelists/*_whitelist.rules
+		</If>
 		<IfModule disp_apache2.c>
 			# Some items cache with the wrong mime type
 			# Use this option to use the name to auto-detect mime types when cached improperly
@@ -51,6 +56,14 @@ PassEnv DISP_ID
 		ReWriteEngine	on
 		LogLevel warn rewrite:info
 		# Global rewrite include
-		Include /etc/httpd/conf.d/rewrites/base_rewrite.rules				
+		Include /etc/httpd/conf.d/rewrites/base_rewrite.rules
+		# Update /etc/sysconfig/httpd with setting the PUBLISH_FORCE_SSL from 0 or 1 to enable or disable enforcing SSL
+		<If "${PUBLISH_FORCE_SSL} == 1">
+			Include /etc/httpd/conf.d/rewrites/xforwarded_forcessl_rewrite.rules
+		</If>
+		
+		
+
+				
 	</IfModule>
 </VirtualHost>
