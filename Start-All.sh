@@ -53,7 +53,7 @@ function resetAEMContainers {
             echo "AEM Docker volumes removed."
 
             #Remove the network stack
-            docker network rm aem-devkit
+            docker network rm aem-devkit_aem-devkit
             
             echo "AEM Docker network removed."
 
