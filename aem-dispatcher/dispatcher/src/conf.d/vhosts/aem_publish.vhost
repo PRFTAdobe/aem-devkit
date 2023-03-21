@@ -5,7 +5,7 @@ PassEnv DISP_ID
 <VirtualHost *:80>
 	ServerName	publish
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	localhost
+	ServerAlias	${PUBLISH_DEFAULT_HOSTNAME}
 	# Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any
 	DocumentRoot	${PUBLISH_DOCROOT}
 	# Add header breadcrumbs for help in troubleshooting
