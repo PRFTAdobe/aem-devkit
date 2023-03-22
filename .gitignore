@@ -13,3 +13,6 @@ _rep_policy
 
 #Ignore OS specific metadata
 .DS_Store
+
+#Ignore AEM License files
+license.properties
