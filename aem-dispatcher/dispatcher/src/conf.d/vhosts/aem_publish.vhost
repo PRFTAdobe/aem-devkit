@@ -3,14 +3,17 @@
 PassEnv DISP_ID
 
 <VirtualHost *:80>
-	ServerName	publish
+	ServerName	${PUBLISH_DEFAULT_HOSTNAME}
 	# Put names of which domains are used for your published site/content here
 	ServerAlias	${PUBLISH_DEFAULT_HOSTNAME}
 	DocumentRoot ${PUBLISH_DOCROOT}
+
+	Include /etc/httpd/conf.d/variables/default.vars
+
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
 			Header always add X-Dispatcher ${DISP_ID}
-			Header always add X-Vhost "publish"
+			Header always add X-Vhost ${PUBLISH_DEFAULT_HOSTNAME}
 			Header merge X-Frame-Options SAMEORIGIN "expr=%{resp:X-Frame-Options}!='SAMEORIGIN'"
 			Header merge X-Content-Type-Options nosniff "expr=%{resp:X-Content-Type-Options}!='nosniff'"
 		# Make sure proxies don't deliver the wrong content
@@ -46,6 +49,10 @@ PassEnv DISP_ID
 		Require all granted
 	</Directory>
 	<IfModule disp_apache2.c>
+		DispatcherConfig conf.dispatcher.d/dispatcher.any
+		DispatcherLog    logs/dispatcher.log 
+		DispatcherLogLevel 3
+		DispatcherDeclineRoot 0
 		# Enabled to allow rewrites to take affect and not be ignored by the dispatcher module
 		DispatcherUseProcessedURL	1
 		# Default setting to allow all errors to come from the aem instance
