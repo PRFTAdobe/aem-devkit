@@ -16,5 +16,4 @@ RUN mkdir -p /mnt/var/www/author && \
     chown -R apache:apache /mnt/var/www
 
 WORKDIR /etc/httpd
-CMD [ "apachectl", \
-      "-DFOREGROUND" ]
+ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
