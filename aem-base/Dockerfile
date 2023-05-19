@@ -3,9 +3,10 @@ FROM ubuntu:latest
 ARG AEM_RUNMODE
 ENV AEM_RUNMODE ${AEM_RUNMODE}
 
-# Install JDK 11
+# Install JDK 11 and a text editor
 RUN apt-get update
 RUN apt-get install openjdk-11-jdk-headless -y
+RUN apt-get install nano
 
 # Copy AEM Dependencies
 ADD packages/license.properties packages/cq-quickstart-6.5.0.jar /data/aem/
