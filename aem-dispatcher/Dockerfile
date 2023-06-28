@@ -1,5 +1,5 @@
 ARG DISPATCHER_MODULE_URL=https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.5.tar.gz
-FROM almalinux:latest
+FROM --platform=linux/amd64 almalinux:latest
 ARG DISPATCHER_MODULE_URL
 
 RUN yum -y update
@@ -16,5 +16,4 @@ RUN mkdir -p /mnt/var/www/author && \
     chown -R apache:apache /mnt/var/www
 
 WORKDIR /etc/httpd
-CMD [ "apachectl", \
-      "-DFOREGROUND" ]
+ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
