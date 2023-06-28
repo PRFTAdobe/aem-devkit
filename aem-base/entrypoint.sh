@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-java -Xmx1024M \
+java -Xmx3096M \
      -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:30303 \
      -Dcom.sun.management.jmxremote.port=9999 \
      -Dcom.sun.management.jmxremote.authenticate=false \
