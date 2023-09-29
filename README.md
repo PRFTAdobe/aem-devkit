@@ -10,7 +10,7 @@ Clone this repo to your local system.
 
 # Github Specifics and the License file
 
-Due to Github's file size limitations, you will need to obtain the 6.5.16 service pack from here: https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/cq650/servicepack/aem-service-pkg-6.5.16.0.zip
+Due to Github's file size limitations, you will need to obtain the 6.5.18 service pack from here: https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/cq650/servicepack/aem-service-pkg-6.5.18.0.zip
 
 You also need to obtain the AEM 6.5 jar file and a license.properties file. Rename the jar file as "cq-quickstart-6.5.0.jar", then place this jar file, the license.properties file and the service pack in the aem-base/packages folder. You should only need to do this once, even if using the resetaem option.
 
